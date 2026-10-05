@@ -1,26 +1,113 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
-
+/* ------------------------------------------------------------------
+   Theme tokens. Every template sets these on its wrapper element via
+   data-theme="...", and shared components only use the semantic
+   utilities below (bg-bg, text-fg, bg-accent, font-display, ...).
+   ------------------------------------------------------------------ */
 @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --color-bg: var(--t-bg);
+  --color-surface: var(--t-surface);
+  --color-fg: var(--t-fg);
+  --color-muted: var(--t-muted);
+  --color-line: var(--t-line);
+  --color-accent: var(--t-accent);
+  --color-accent-fg: var(--t-accent-fg);
+  --color-deep: var(--t-deep);
+  --color-deep-fg: var(--t-deep-fg);
+
+  --font-display: var(--t-font-display);
+  --font-body: var(--t-font-body);
+
+  --radius-theme: var(--t-radius);
+  --radius-theme-lg: var(--t-radius-lg);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+/* 1 - Classic & Elegant: ivory, navy, gold */
+[data-theme="classic"] {
+  --t-bg: #faf7f1;
+  --t-surface: #ffffff;
+  --t-fg: #1b2236;
+  --t-muted: #6a6f7d;
+  --t-line: #e4dccb;
+  --t-accent: #a8873f;
+  --t-accent-fg: #ffffff;
+  --t-deep: #141c33;
+  --t-deep-fg: #f4efe3;
+  --t-font-display: var(--font-cormorant), Georgia, serif;
+  --t-font-body: var(--font-lato), system-ui, sans-serif;
+  --t-radius: 0px;
+  --t-radius-lg: 0px;
+}
+
+/* 2 - Modern Minimal: white, black, quiet gray */
+[data-theme="minimal"] {
+  --t-bg: #ffffff;
+  --t-surface: #f5f5f3;
+  --t-fg: #111111;
+  --t-muted: #6b6b6b;
+  --t-line: #e6e6e3;
+  --t-accent: #111111;
+  --t-accent-fg: #ffffff;
+  --t-deep: #111111;
+  --t-deep-fg: #ffffff;
+  --t-font-display: var(--font-jost), system-ui, sans-serif;
+  --t-font-body: var(--font-inter), system-ui, sans-serif;
+  --t-radius: 0px;
+  --t-radius-lg: 0px;
+}
+
+/* 3 - Warm Heritage: cream, walnut, copper */
+[data-theme="heritage"] {
+  --t-bg: #fbf3e6;
+  --t-surface: #fffaf0;
+  --t-fg: #3a2a20;
+  --t-muted: #7b6657;
+  --t-line: #ead9bd;
+  --t-accent: #a2532a;
+  --t-accent-fg: #fff8ee;
+  --t-deep: #3a2a20;
+  --t-deep-fg: #fbf3e6;
+  --t-font-display: var(--font-fraunces), Georgia, serif;
+  --t-font-body: var(--font-nunito), system-ui, sans-serif;
+  --t-radius: 0.75rem;
+  --t-radius-lg: 1.5rem;
+}
+
+/* 4 - Bold Dark: near-black, champagne gold */
+[data-theme="dark"] {
+  --t-bg: #0b0b0d;
+  --t-surface: #151519;
+  --t-fg: #f3efe6;
+  --t-muted: #9c9ba3;
+  --t-line: #2a2a31;
+  --t-accent: #d9b668;
+  --t-accent-fg: #0b0b0d;
+  --t-deep: #050506;
+  --t-deep-fg: #f3efe6;
+  --t-font-display: var(--font-marcellus), Georgia, serif;
+  --t-font-body: var(--font-manrope), system-ui, sans-serif;
+  --t-radius: 0px;
+  --t-radius-lg: 0px;
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: #ffffff;
+  color: #171717;
+  font-family: var(--font-geist-sans), Arial, Helvetica, sans-serif;
+}
+
+.theme-root {
+  background: var(--t-bg);
+  color: var(--t-fg);
+  font-family: var(--t-font-body);
+}
+
+::selection {
+  background: var(--t-accent);
+  color: var(--t-accent-fg);
 }
